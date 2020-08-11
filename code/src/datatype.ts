@@ -1,0 +1,67 @@
+// 原始类型
+let bool: boolean = true
+let num: number = 123
+let str: string = 'abc'
+// 变量的数据类型是不可以改变的
+// str = 123
+// 或者联合类型
+let num1: number | undefined | null = 123
+
+// 数组
+// 定义数组类型有两种方式
+let arr1: number[] = [1, 2, 3]
+let arr2: Array<number> = [1, 2, 3]
+// 数组内的成员不是同一种类型
+let arr3: Array<number | string> = [1, 2, 3, '4']
+
+// 元祖 限定了数组的类型和个数
+let tuple: [number, string] = [1, '2']
+// 元祖的越界问题，使用数组的push等方法。实际开发中强烈不建议这样使用
+tuple.push(2)
+console.log(tuple); // [1, '2', 2]
+// 不允许进行越界访问
+// tuple[2] 报错
+
+// 函数
+// 给参数加上函数注解
+let add = (x: number, y: number) => x + y
+// 也可以在括号外加上返回值的类型
+let add1 = (x: number, y: number): number => x + y
+// 定义函数类型
+let compute: (x: number, y: number) => number
+// 使用
+compute = (a, b) => a + b;
+
+
+// 对象
+let obj: object = {x: 1, y: 2}
+// 不能任意修改对象的属性，只是简单的定义了obj的类型是object，并没有具体定义属性的类型
+// obj.x 报错
+// 正常的做法应该是这样, 这样子的话属性是可以修改的 
+let obj1: {x: number, y: number} = {x: 1, y: 2}
+obj1.x = 10
+
+// symbol
+let s1: symbol = Symbol()
+let s2 = Symbol()
+
+// undefined null
+let un: undefined = undefined
+let nu: null = null
+
+// void 操作符 可以让任意表达式返回undefined
+let noReturn = () => {}
+
+// any
+let x
+x = 1
+x = []
+x = () => {}
+
+// never 永远不会返回
+let error = () => {
+  throw new Error('error')
+}
+let endless = () => {
+  while(true) {}
+}
