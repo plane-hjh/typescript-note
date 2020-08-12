@@ -116,3 +116,55 @@ class MyFlow extends WorkFlow {
   }
 }
 new MyFlow().next().step1().next().step2()
+
+// 类与接口的关系
+interface Human {
+  name: string;
+  eat(): void;
+}
+// 类实现接口的时候，必须声明接口中声明的所有属性
+// 接口只能约束类的公有成员，不能约束类的构造函数
+class Asian implements Human {
+  constructor(name: string) {
+    this.name = name
+  }
+  name: string
+  eat() {
+
+  }
+}
+
+// 接口的继承
+interface Man extends Human {
+  run(): void
+}
+interface Child {
+  cry(): void
+}
+// 可以继承多个接口，用逗号分隔
+interface Boy extends Man, Child {}
+// 需要包含以下属性: run, name, eat, cry
+let boy: Boy = {
+  name: '',
+  run() {},
+  eat() {},
+  cry() {}
+}
+
+// 接口继承类，把类的成员都抽象出来，只继承类的结构，不继续类的实现
+// 不仅抽离了公有成员，还抽离了私有成员和受保护成员
+class Auto {
+  state = 1
+  // private state2 = 2
+}
+interface AutoInterface extends Auto {
+
+}
+
+class C implements AutoInterface {
+  state = 1
+}
+
+class Bus extends Auto implements AutoInterface {
+
+}
