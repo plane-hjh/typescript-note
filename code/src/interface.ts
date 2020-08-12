@@ -1,0 +1,119 @@
+// 对象类型接口
+interface List {
+  id: number;
+  name: string;
+}
+
+interface Result {
+  data: List[]
+}
+
+function render(result: Result) {
+  result.data.forEach((value) => {
+    console.log(value.id, value.name);
+  })
+}
+
+let result = {
+  data: [
+    {
+      id: 1, name: 'A'
+    },
+    {
+      id: 2, name: 'B'
+    }
+  ]
+}
+
+// 这样子也是可以的
+let result1 = {
+  data: [
+    {
+      id: 1, name: 'A', sex: 'male'
+    },
+    {
+      id: 2, name: 'B'
+    }
+  ]
+}
+
+render(result)
+
+// 如果是新增的属性，直接在参数里面写对象字面量是不行的
+// render({
+//   data: [
+//     {
+//       id: 1, name: 'A', sex: 'male'
+//     },
+//     {
+//       id: 2, name: 'B'
+//     }
+//   ]
+// })
+
+// 我们可以使用类型断言避免这种情况 两种写法
+// 写法一 推荐
+render({
+  data: [
+    {
+      id: 1, name: 'A', sex: 'male'
+    },
+    {
+      id: 2, name: 'B'
+    }
+  ]
+} as Result)
+// 写法二
+render(<Result>{
+  data: [
+    {
+      id: 1, name: 'A', sex: 'male'
+    },
+    {
+      id: 2, name: 'B'
+    }
+  ]
+})
+
+// 或者使用字符串索引签名
+// interface List {
+//   id: number;
+//   name: string;
+//   [x: string]: any;  // 字符串索引签名,可以支持多个属性了
+// }
+
+// 可选属性，表示有或者没有
+interface List1  {
+  id: number;
+  name: string;
+  age?: number
+}
+
+// 只读属性
+interface List2 {
+  readonly id: number;
+  name: string;
+}
+
+// 函数类型接口
+// 一般情况
+let add2: (x: number, y: number) => number
+// 使用接口来定义, 等价的
+// interface Add {
+//   (x: number, y: number): number
+// }
+// 或者使用类型别名
+type Add = (x: number, y: number) => number
+// 使用
+let add3: Add = (a, b) => a + b
+
+// 混合类型接口，可以定义对象也可以定义函数
+interface Lib {
+  (): void;
+  version: string,
+  doSomething(): void
+}
+// 使用
+let lib: Lib = (() => {}) as Lib  // 使用类型断言
+lib.version = '1.0'
+lib.doSomething = () => {}
