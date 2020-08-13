@@ -1,12 +1,3 @@
-# 类型基础
-
-## 泛型
-
-### 泛型函数和泛型接口
-
-泛型：不预先确定的数据类型，具体的类型在使用的时候才能确定
-
-```ts
 // 泛型函数
 function log<T>(value: T): T {
   console.log(value);
@@ -39,11 +30,7 @@ interface Log3<T = string> {
 }
 // 使用
 let myLog3: Log3 = log
-```
 
-### 泛型类和泛型约束
-
-```ts
 // 泛型类
 class Log4<T> {
   // 泛型不能用于类的静态成员
@@ -67,12 +54,3 @@ function Log6<T extends Length>(value: T): T {
   console.log(value, value.length);
   return value
 }
-```
-
-### 泛型的好处
-
-- 函数和类可以轻松地支持多种类型，增强程序的扩展性
-
-- 不必写多条函数重载，冗长的联合类型声明，增强代码可读性
-
-- 灵活控制类型之间的约束
