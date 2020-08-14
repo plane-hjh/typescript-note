@@ -107,3 +107,24 @@ function getLanguage(type: Type) {
 }
 
 getLanguage(Type.Strong)
+
+
+
+//交叉类型：实际上是取所有类型的并集，不是交集
+interface DogInterface {
+  run(): void
+}
+interface CatInterface {
+  jump(): void
+}
+let pet: DogInterface & CatInterface = {
+  run() {},
+  jump() {}
+}
+
+let q: number | string = 10
+// 字面量联合类型
+let m: 'a' | 'b' | 'c'
+let n: 1 | 2
+
+
