@@ -21,3 +21,7 @@ a repository about typescript
 8. [类](./docs/basic/8.类.md)
 
 9. [泛型](./docs/basic/9.泛型.md)
+
+10. [类型检查机制](./docs/basic/10.类型检查机制.md)
+
+11. [交叉类型和联合类型](./docs/basic/11.交叉类型和联合类型.md)
