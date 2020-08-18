@@ -25,3 +25,5 @@ a repository about typescript
 10. [类型检查机制](./docs/basic/10.类型检查机制.md)
 
 11. [交叉类型和联合类型](./docs/basic/11.交叉类型和联合类型.md)
+
+12. [索引类型](./docs/basic/12.索引类型.md)
